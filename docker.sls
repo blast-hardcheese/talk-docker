@@ -35,3 +35,12 @@ docker.io:
 
         # This is also a handy place to tweak where Docker's temporary files go.
         #export TMPDIR="/mnt/bigdrive/docker-tmp"
+
+/usr/bin/docker:
+  file.managed:
+    - contents: |
+        export DOCKER_HOST={{ docker_tcp_socket }}
+        docker.io "$@"
+    - mode: 0755
+    - require:
+      - pkg: docker.io
