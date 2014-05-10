@@ -1,3 +1,13 @@
+{#
+  docker.sls
+
+  Currently, this sls assumes you're running a relatively recent version of Debian,
+  (one that has docker.io packaged, with deps). This will get Docker 0.11.1, overwriting
+  the system-provided Docker install.
+
+  Additionally, the configuration file overrides the default options, listening on both
+  the default unix socket and port 4243.
+#}
 {% set docker_version = "0.11.1" %}
 {% set docker_hash = "md5=3fc7e007d6637afa11e1632294d7f882" %}
 {% set docker_tcp_socket = "tcp://127.0.0.1:4243" %}
